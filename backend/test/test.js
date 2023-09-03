@@ -41,7 +41,7 @@ describe("Teacher Endpoints", () => {
       "age": 42
     });
 
-    const res = await requestWithSupertest.get("/listTeachers");
+    const res = await requestWithSupertest.get("/addTeacher");
     expect(res.status).toEqual(200);
     let body = res.body;
 
