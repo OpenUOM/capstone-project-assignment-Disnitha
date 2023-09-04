@@ -62,7 +62,7 @@ describe("Teacher Endpoints", () => {
       "age": 50
     });
 
-    const res = await requestWithSupertest.get("/listTeachers");
+    const res = await requestWithSupertest.get("/editTeacher");
     expect(res.status).toEqual(200);
     let body = res.body;
 
@@ -84,7 +84,7 @@ describe("Teacher Endpoints", () => {
       "id": 10003
     });
 
-    const res = await requestWithSupertest.get("/listTeachers");
+    const res = await requestWithSupertest.get("/deleteTeacher");
     expect(res.status).toEqual(200);
     let body = res.body;
 
