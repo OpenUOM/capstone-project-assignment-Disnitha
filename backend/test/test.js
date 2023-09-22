@@ -41,13 +41,13 @@ describe("Teacher Endpoints", () => {
       "age": 42
     });
 
-    const res = await requestWithSupertest.get("/addTeacher");
+    const res = await requestWithSupertest.get("/listTeachers");
     expect(res.status).toEqual(200);
     let body = res.body;
 
-    expect(body.length).toBe(4)
+    expect(body.length).toEqual(4);
 
-    expect(body).toContainEqual({
+    expect(body).toBe({
       "id": 10033,
       "name": "Nilanthi Fernando",
       "age": 42
@@ -62,7 +62,7 @@ describe("Teacher Endpoints", () => {
       "age": 50
     });
 
-    const res = await requestWithSupertest.get("/editTeacher");
+    const res = await requestWithSupertest.get("/listTeachers");
     expect(res.status).toEqual(200);
     let body = res.body;
 
@@ -84,7 +84,7 @@ describe("Teacher Endpoints", () => {
       "id": 10003
     });
 
-    const res = await requestWithSupertest.get("/deleteTeacher");
+    const res = await requestWithSupertest.get("/listTeachers");
     expect(res.status).toEqual(200);
     let body = res.body;
 
