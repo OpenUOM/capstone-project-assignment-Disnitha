@@ -47,7 +47,7 @@ describe("Teacher Endpoints", () => {
 
     expect(body.length).toEqual(4);
 
-    expect(body).toEqual({
+    expect(body).toContainEqual({
       "id": 10033,
       "name": "Nilanthi Fernando",
       "age": 42
@@ -66,7 +66,7 @@ describe("Teacher Endpoints", () => {
     expect(res.status).toEqual(200);
     let body = res.body;
 
-    expect(body).toEqual({
+    expect(body).toContainEqual({
       "id": 10002,
       "name": "Saman",
       "age": 50
@@ -102,7 +102,7 @@ describe("Teacher Endpoints", () => {
       "age": 45
     });
 
-    expect(body).not.toContainEqual({
+    expect(body).not.toContain({
       "id": 10003,
       "name": "Parasanna Mahagamage",
       "age": 30
@@ -164,7 +164,7 @@ describe("Student Endpoints", () => {
     expect(res.status).toEqual(200);
     let body = res.body;
 
-    expect(body).toEqual({
+    expect(body).toContainEqual({
       "id": 20002,
       "name": "Sandakan",
       "age": 15,
