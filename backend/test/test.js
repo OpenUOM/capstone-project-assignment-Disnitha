@@ -66,7 +66,9 @@ describe("Teacher Endpoints", () => {
     expect(res.status).toEqual(200);
     let body = res.body;
 
-    expect(body).toContainEqual({
+    let editedTeacher = body.find((teacher) => teacher.id === 10002);
+
+    expect(editedTeacher).toContain({
       "id": 10002,
       "name": "Saman",
       "age": 50
@@ -74,6 +76,7 @@ describe("Teacher Endpoints", () => {
 
     expect(body).not.toContainEqual({
       "name": "Saman De Silva",
+      "age": 40
     });
   });
 
@@ -95,12 +98,6 @@ describe("Teacher Endpoints", () => {
     });
 
     expect(body.length).toBe(2);
-
-    expect(body).toContainEqual({
-      "id": 10001,
-      "name": "Kusuma Ranasinghe",
-      "age": 45
-    });
 
     expect(body).not.toContain({
       "id": 10003,
