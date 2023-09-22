@@ -56,28 +56,27 @@ describe("Teacher Endpoints", () => {
 
   it("POST /editTeacher should show a newly added teacher", async () => {
     // add new teacher
-    await requestWithSupertest.post("/editTeacher").send({
-      "id": 10002,
-      "name": "Saman",
-      "age": 50
-    });
+    const newTeacher = {
+      id: 10002,
+      name: "Saman",
+      age: 50
+    };
+    await requestWithSupertest.post("/editTeacher").send(newTeacher);
 
     const res = await requestWithSupertest.get("/listTeachers");
     expect(res.status).toEqual(200);
-    let body = res.body;
+    const teacherList = res.body;
+    const addedTeacher = teacherList.find((teacher) => teacher.id === newTeacher.id);
 
     let editedTeacher = body.find((teacher) => teacher.id === 10002);
 
-    expect(editedTeacher).toEqual({
-      "id": 10002,
-      "name": "Saman",
-      "age": 50
-    });
+    expect(addedTeacher).toEqual(newTeacher);
 
-    expect(body).not.toContainEqual({
-      "name": "Saman De Silva",
-      "age": 40
-    });
+    const differentTeacher = {
+      name: "Saman De Silva",
+      age: 40
+    };
+    expect(teacherList).not.toContainEqual(differentTeacher);
   });
 
   it("POST /deleteTeacher should delete a teacher", async () => {
