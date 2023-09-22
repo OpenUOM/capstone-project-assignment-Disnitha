@@ -68,7 +68,7 @@ describe("Teacher Endpoints", () => {
 
     let editedTeacher = body.find((teacher) => teacher.id === 10002);
 
-    expect(editedTeacher).toContain({
+    expect(editedTeacher).toEqual({
       "id": 10002,
       "name": "Saman",
       "age": 50
@@ -99,7 +99,7 @@ describe("Teacher Endpoints", () => {
 
     expect(body.length).toBe(2);
 
-    expect(body).not.toContain({
+    expect(body).not.toContainEqual({
       "id": 10003,
       "name": "Parasanna Mahagamage",
       "age": 30
