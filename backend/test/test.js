@@ -61,16 +61,17 @@ describe("Teacher Endpoints", () => {
       name: "Saman",
       age: 50
     };
+
     await requestWithSupertest.post("/editTeacher").send(newTeacher);
 
     const res = await requestWithSupertest.get("/listTeachers");
     expect(res.status).toEqual(200);
+
     const teacherList = res.body;
     const addedTeacher = teacherList.find((teacher) => teacher.id === newTeacher.id);
 
-    let editedTeacher = body.find((teacher) => teacher.id === 10002);
-
     expect(addedTeacher).toEqual(newTeacher);
+
 
     const differentTeacher = {
       name: "Saman De Silva",
